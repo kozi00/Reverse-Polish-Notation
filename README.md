@@ -15,6 +15,8 @@ Output for each formula:
   b) before executing each operation print the operator or function and the content of the stack;
   c) the final result;
   d) if you encounter a division by 0, print "ERROR" and move to the next expression.
+
+  
 Additional remarks and hints:
 Each instance of MINi and MAXi function has a specified number of arguments, i, in the postfix notation (see the example output)
 Do not store the given expressions (i.e. in the infix notation), only the latest token should be sufficient. Consequently, you should count the arguments of MIN and MAX during the conversion. Additional instances of data structures might be required.
