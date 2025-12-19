@@ -1,5 +1,5 @@
 
-## 🛠 Features
+##  Features
 
 ### 1. Infix to Postfix Conversion
 
@@ -24,7 +24,7 @@ The evaluator processes the postfix expression and:
 
 ---
 
-## 📋 Requirements & Constraints
+##  Requirements & Constraints
 
 * **Custom Data Structures**:
 * For full points, the stack must be implemented as a **linked list** (manual memory management).
@@ -36,7 +36,7 @@ The evaluator processes the postfix expression and:
 
 ---
 
-## 📤 Output Format
+##  Output Format
 
 For each formula, the program outputs:
 
@@ -46,7 +46,7 @@ For each formula, the program outputs:
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 1. **Compile**:
 ```bash
