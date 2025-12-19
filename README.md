@@ -1,27 +1,70 @@
-Input:
-n -number of formulas
-n formulas, each in the form given below.
-Each formula is a valid expression in an infix notation with functions and ends with a dot ('.'). Each token is separated by some whitespace characters. Each operand is a positive integer (although the result of an operation might be negative). Each operator is a single character and every function name consists only of capital letters.
-The following operations are available, in the ascending order of priority:
-1) a + b, a - b ;
-2) a * b, a / b -all operations are made on integers, hence the results of division are rounded down (standard C '/' operator). You cannot divide by 0 (see the Output section);
-3) IF(a, b, c) -if a>0 return b, otherwise c,
-4) N a -unary negation, i.e. -a,
-5) MIN( a1, a2, ... ), MAX(a1, a2, ...) -functions MIN and MAX do not have a restriction on the number of parameters;
-6) ( ... ) -parentheses.
 
-Output for each formula:
-  a) the formula in the postfix notation;
-  b) before executing each operation print the operator or function and the content of the stack;
-  c) the final result;
-  d) if you encounter a division by 0, print "ERROR" and move to the next expression.
+## 🛠 Features
 
-  
-Additional remarks and hints:
-Each instance of MINi and MAXi function has a specified number of arguments, i, in the postfix notation (see the example output)
-Do not store the given expressions (i.e. in the infix notation), only the latest token should be sufficient. Consequently, you should count the arguments of MIN and MAX during the conversion. Additional instances of data structures might be required.
-You may assume that all values will be withing range of int. Note that each token is separate.
-Using the type string and data structures from libraries is forbidden.
-For the full amount of points, a stack based on a list is required. In the case of a stack implemented using an array, the amount of points is scaled by 0.75.
-This does not mean that stacks are the only permitted data structures. You can use additonal data structures to solve encountered difficulties beyond the basic algorithms from the lecture.
-Remember to clean up any unused memory. Memory leaks will be penalized.
+### 1. Infix to Postfix Conversion
+
+The program uses a modified **Shunting-Yard algorithm** to handle:
+
+* **Basic Operators**: `+`, `-`, `*`, `/` with standard precedence.
+* **Unary Negation**: Represented by `N`.
+* **Functions**:
+* `IF(a, b, c)`: Conditional logic.
+* `MIN(a1, a2, ...)` and `MAX(a1, a2, ...)`: Variable number of arguments.
+
+
+* **Dynamic Argument Counting**: Automatically detects and appends the number of arguments to `MIN` and `MAX` in the postfix output (e.g., `MIN3`).
+
+### 2. Stack-Based Evaluation
+
+The evaluator processes the postfix expression and:
+
+* Prints the operator/function and the current state of the operand stack before every execution.
+* Handles **Integer Arithmetic** (truncating division).
+* **Error Handling**: Detects and reports division by zero, terminating the current formula evaluation immediately.
+
+---
+
+## 📋 Requirements & Constraints
+
+* **Custom Data Structures**:
+* For full points, the stack must be implemented as a **linked list** (manual memory management).
+* Standard Template Library (STL) and the `string` class are **forbidden**.
+
+
+* **Memory Management**: Strict requirements for cleaning up unused memory to avoid leaks.
+* **Tokenization**: Each token (operand, operator, or function) is processed individually from the input stream.
+
+---
+
+## 📤 Output Format
+
+For each formula, the program outputs:
+
+1. The complete **Postfix notation**.
+2. A step-by-step trace: `[Operator/Function] [Stack Contents]`.
+3. The **Final Result** or `ERROR` in case of division by zero.
+
+---
+
+## 🚀 How to Run
+
+1. **Compile**:
+```bash
+g++ -O3 main.cpp -o calculator
+
+```
+
+
+2. **Input**: Provide the number of formulas followed by the expressions ending with a dot.
+```text
+1
+IF ( 1 , MIN ( 10 , 20 , 5 ) , 0 ) .
+
+```
+
+
+3. **Run**:
+```bash
+./calculator < input.txt
+
+```
